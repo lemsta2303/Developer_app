@@ -1,18 +1,32 @@
 package com.example.developer;
 
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 
 import java.io.Serializable;
 import java.util.List;
 import java.util.Objects;
+import java.util.UUID;
 
 @Data
 @Builder
+@Entity
+@Table(name = "construction_project")
+@AllArgsConstructor
 public class ConstructionProject implements Serializable {
+
+    @Id
+    private UUID id;
+
     private String name;
     private String location;
+
+    @OneToMany(mappedBy = "project", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Material> materials;
+
+    public ConstructionProject() {}
 
     @Override
     public String toString() {
