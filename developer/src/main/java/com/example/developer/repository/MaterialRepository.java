@@ -1,5 +1,7 @@
-package com.example.developer;
+package com.example.developer.repository;
 
+import com.example.developer.model.ConstructionProject;
+import com.example.developer.model.Material;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 import java.util.List;

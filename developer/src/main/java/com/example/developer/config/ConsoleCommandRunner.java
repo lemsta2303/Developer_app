@@ -1,5 +1,9 @@
-package com.example.developer;
+package com.example.developer.config;
 
+import com.example.developer.model.ConstructionProject;
+import com.example.developer.model.Material;
+import com.example.developer.service.ConstructionProjectService;
+import com.example.developer.service.MaterialService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;

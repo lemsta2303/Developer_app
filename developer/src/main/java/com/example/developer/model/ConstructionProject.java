@@ -1,4 +1,4 @@
-package com.example.developer;
+package com.example.developer.model;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -13,7 +13,7 @@ import java.util.UUID;
 @Data
 @Builder
 @Entity
-@Table(name = "construction_project")
+@Table(name = "construction_projects")
 @AllArgsConstructor
 public class ConstructionProject implements Serializable {
 

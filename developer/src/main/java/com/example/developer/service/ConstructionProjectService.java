@@ -1,5 +1,7 @@
-package com.example.developer;
+package com.example.developer.service;
 
+import com.example.developer.model.ConstructionProject;
+import com.example.developer.repository.ConstructionProjectRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +18,7 @@ public class ConstructionProjectService {
     public ConstructionProjectService(ConstructionProjectRepository constructionProjectRepository) {
         this.constructionProjectRepository = constructionProjectRepository;
     }
+
 
     public List<ConstructionProject> findAll() {
         return constructionProjectRepository.findAll();

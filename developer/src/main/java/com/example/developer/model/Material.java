@@ -1,4 +1,4 @@
-package com.example.developer;
+package com.example.developer.model;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -24,15 +24,14 @@ public class Material implements Serializable {
 
     @Column(name = "unit_price")
     private double unitPrice;
+
     private int quantity;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "project_id")
     private ConstructionProject project;
 
-    public Material() {
-
-    }
+    public Material() {}
 
     @Override
     public String toString(){
