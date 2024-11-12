@@ -24,7 +24,6 @@ public class ConstructionProjectService {
     }
 
 
-    // methods for consolecommandrunner
     public List<ConstructionProject> findAll() {
         return constructionProjectRepository.findAll();
     }
@@ -68,7 +67,7 @@ public class ConstructionProjectService {
 
     public void updateProject(UUID id, ConstructionProjectCreateUpdateDTO projectDTO) {
         ConstructionProject project = constructionProjectRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Project not found with id " + id));
+                .orElseThrow(() -> new RuntimeException("Project not found with id " + id)); // 404 Not Found
 
         project.setName(projectDTO.getName());
         project.setLocation(projectDTO.getLocation());
@@ -76,7 +75,15 @@ public class ConstructionProjectService {
         constructionProjectRepository.save(project);
     }
 
-    public void deleteProject(UUID id) {
-        constructionProjectRepository.deleteById(id);
+    public boolean deleteProject(UUID id) {
+        Optional<ConstructionProject> project = constructionProjectRepository.findById(id);
+
+        if (project.isPresent()) {
+            constructionProjectRepository.deleteById(id);
+            return true;
+        }
+
+        return false;
     }
+
 }

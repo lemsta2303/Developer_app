@@ -1,0 +1,45 @@
+### 1. Tworzenie nowego projektu
+POST http://localhost:8080/api/projects
+Content-Type: application/json
+
+{
+  "name": "New Project",
+  "location": "New York"
+}
+
+### 2. Pobranie wszystkich projektów
+GET http://localhost:8080/api/projects
+
+### 3. Tworzenie nowego materiału dla projektu
+POST http://localhost:8080/api/projects/a577d90c-22e7-48a9-a0a8-52df10c81585/materials
+Content-Type: application/json
+
+{
+  "name": "Concrete",
+  "unit": "kg",
+  "unitPrice": 100.0,
+  "quantity": 50
+}
+
+### 4. Pobranie szczegółów projektu po ID
+GET http://localhost:8080/api/projects/a577d90c-22e7-48a9-a0a8-52df10c81585
+
+### 5. Aktualizacja materiału
+PUT http://localhost:8080/api/materials/f7fadc30-5505-4ba3-a89e-22724366d919
+Content-Type: application/json
+
+{
+  "name": "Updated Concrete",
+  "unit": "kg",
+  "unitPrice": 110.0,
+  "quantity": 60
+}
+
+### 6. Usuwanie materiału
+DELETE http://localhost:8080/api/materials/f7fadc30-5505-4ba3-a89e-22724366d919
+
+### 7. Pobranie szczegółów materiału
+GET http://localhost:8080/api/materials/fd765c63-fc6e-4c11-bcb3-c892952e23bf
+
+### 8. Pobranie wszystkich materiałów
+GET http://localhost:8080/api/materials

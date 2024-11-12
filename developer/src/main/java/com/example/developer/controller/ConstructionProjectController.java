@@ -5,6 +5,7 @@ import com.example.developer.dto.ConstructionProjectDetailDTO;
 import com.example.developer.dto.ConstructionProjectSummaryDTO;
 import com.example.developer.service.ConstructionProjectService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -32,8 +33,12 @@ public class ConstructionProjectController {
     //getting one project by id which is in url
     @GetMapping("/{id}")
     public ResponseEntity<ConstructionProjectDetailDTO> getProjectById(@PathVariable UUID id) {
-        ConstructionProjectDetailDTO projectDetail = constructionProjectService.getProjectById(id);
-        return ResponseEntity.ok(projectDetail); // 200 OK
+        try {
+            ConstructionProjectDetailDTO projectDetail = constructionProjectService.getProjectById(id);
+            return ResponseEntity.ok(projectDetail); // 200 OK
+        } catch (RuntimeException ex) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null); // 404 Not Found
+        }
     }
 
     //getting all projects
@@ -48,15 +53,24 @@ public class ConstructionProjectController {
     public ResponseEntity<Void> updateProject(
             @PathVariable UUID id,
             @RequestBody ConstructionProjectCreateUpdateDTO projectDTO) {
-        constructionProjectService.updateProject(id, projectDTO);
-        return ResponseEntity.ok().build(); // 200 OK
+        try {
+            constructionProjectService.updateProject(id, projectDTO);
+            return ResponseEntity.ok().build(); // 200 OK
+        } catch (RuntimeException ex) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
     }
 
     //deleting project by id
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteProject(@PathVariable UUID id) {
-        constructionProjectService.deleteProject(id);
-        return ResponseEntity.noContent().build(); // 204 No Content
+        boolean deleted = constructionProjectService.deleteProject(id);
+
+        if (deleted) {
+            return ResponseEntity.noContent().build(); // 204 No Content
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build(); // 404 Not Found
+        }
     }
 
 }
