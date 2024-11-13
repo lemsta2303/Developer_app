@@ -17,7 +17,6 @@ public class ConstructionProjectDetailDTO {
     private String location;
     private List<MaterialSummaryDTO> materials;
 
-
     public static ConstructionProjectDetailDTO from(ConstructionProject project) {
         return ConstructionProjectDetailDTO.builder()
                 .id(project.getId())

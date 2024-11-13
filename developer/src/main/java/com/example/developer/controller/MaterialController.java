@@ -5,6 +5,7 @@ import com.example.developer.dto.MaterialDetailDTO;
 import com.example.developer.dto.MaterialSummaryDTO;
 import com.example.developer.service.MaterialService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,7 +24,7 @@ public class MaterialController {
     }
 
     // creating new material
-    @PostMapping("/projects/{projectId}/materials")
+    @PostMapping("/{projectId}")
     public ResponseEntity<Void> createMaterial(
             @PathVariable UUID projectId,
             @RequestBody MaterialCreateUpdateDTO materialDTO) {
@@ -31,7 +32,7 @@ public class MaterialController {
             materialService.createMaterial(projectId, materialDTO);
             return ResponseEntity.status(201).build();
         } catch (RuntimeException ex) {
-            return ResponseEntity.status(404).build();  // 404 Not Found
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();  // 404 Not Found
         }
     }
 
@@ -42,7 +43,7 @@ public class MaterialController {
             MaterialDetailDTO materialDetailDTO = materialService.getMaterialById(id);
             return ResponseEntity.ok(materialDetailDTO);
         } catch (RuntimeException ex) {
-            return ResponseEntity.status(404).build();
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
     }
 
@@ -62,7 +63,7 @@ public class MaterialController {
             materialService.updateMaterial(id, materialDTO);
             return ResponseEntity.ok().build();
         } catch (RuntimeException ex) {
-            return ResponseEntity.status(404).build();
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
     }
 
@@ -73,7 +74,7 @@ public class MaterialController {
         if (deleted) {
             return ResponseEntity.noContent().build();
         } else {
-            return ResponseEntity.status(404).build();
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
     }
 

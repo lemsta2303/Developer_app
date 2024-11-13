@@ -3,29 +3,42 @@ POST http://localhost:8080/api/projects
 Content-Type: application/json
 
 {
-  "name": "New Project",
+  "name": "New Project2",
   "location": "New York"
 }
 
 ### 2. Pobranie wszystkich projektów
 GET http://localhost:8080/api/projects
 
-### 3. Tworzenie nowego materiału dla projektu
-POST http://localhost:8080/api/projects/a577d90c-22e7-48a9-a0a8-52df10c81585/materials
+### 3. Pobranie szczegółów projektu po ID
+GET http://localhost:8080/api/projects/a0941ab7-2abd-4142-b94e-3aa8b0ff2361
+
+### 4. Zaktualizowanie projektu
+PUT http://localhost:8080/api/projects/a0941ab7-2abd-4142-b94e-3aa8b0ff2361
 Content-Type: application/json
 
 {
-  "name": "Concrete",
+  "name": "Updated Project Text",
+  "location": "New York"
+}
+
+### 5. Usunięcie projektu
+DELETE http://localhost:8080/api/projects/a0941ab7-2abd-4142-b94e-3aa8b0ff2111
+
+
+### 6. Tworzenie nowego materiału dla projektu
+POST http://localhost:8080/api/materials/c43ed386-9114-40fe-b622-2cc9b2ea0bc0
+Content-Type: application/json
+
+{
+  "name": "Example",
   "unit": "kg",
   "unitPrice": 100.0,
   "quantity": 50
 }
 
-### 4. Pobranie szczegółów projektu po ID
-GET http://localhost:8080/api/projects/a577d90c-22e7-48a9-a0a8-52df10c81585
-
-### 5. Aktualizacja materiału
-PUT http://localhost:8080/api/materials/f7fadc30-5505-4ba3-a89e-22724366d919
+### 7. Aktualizacja materiału
+PUT http://localhost:8080/api/materials/c475024a-0f81-4711-8c27-12cf84cd5b15
 Content-Type: application/json
 
 {
@@ -35,11 +48,11 @@ Content-Type: application/json
   "quantity": 60
 }
 
-### 6. Usuwanie materiału
-DELETE http://localhost:8080/api/materials/f7fadc30-5505-4ba3-a89e-22724366d919
+### 8. Pobranie szczegółów materiału
+GET http://localhost:8080/api/materials/c475024a-0f81-4711-8c27-12cf84cd5b15
 
-### 7. Pobranie szczegółów materiału
-GET http://localhost:8080/api/materials/fd765c63-fc6e-4c11-bcb3-c892952e23bf
+### 9. Usuwanie materiału
+DELETE http://localhost:8080/api/materials/c475024a-0f81-4711-8c27-12cf84cd5b15
 
-### 8. Pobranie wszystkich materiałów
+### 10. Pobranie wszystkich materiałów
 GET http://localhost:8080/api/materials
