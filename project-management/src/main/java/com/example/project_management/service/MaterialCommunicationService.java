@@ -25,7 +25,6 @@ public class MaterialCommunicationService {
 
     public void notifyMaterialsAboutNewProject(ConstructionProject project) {
         String url = "http://localhost:8082/api/materials/project/" + project.getId();
-
         ConstructionProjectSummaryDTO dto = ConstructionProjectSummaryDTO.from(project);
         restTemplate.postForObject(url, dto, Void.class);
     }

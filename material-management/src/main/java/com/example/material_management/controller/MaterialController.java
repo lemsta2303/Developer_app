@@ -85,6 +85,8 @@ public class MaterialController {
     //delete materials when some project is deleted to synchronous data
     @DeleteMapping("/project/{projectId}")
     public ResponseEntity<Void> deleteMaterialsByProjectId(@PathVariable UUID projectId) {
+        System.out.println("!!!!!!!Deleting materials for project with id: " + projectId);
+        materialService.deleteMaterialsByProjectId(projectId);
         simplifiedProjectService.deleteSimplifiedProject(projectId);
         return ResponseEntity.noContent().build();
     }

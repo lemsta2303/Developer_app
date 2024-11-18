@@ -51,7 +51,9 @@ public class MaterialService {
     }
 
     public List<Material> findByProject(UUID projectId) {
-        return materialRepository.findByProject(projectId);
+        SimplifiedProject project = simplifiedProjectService.findById(projectId)
+                .orElseThrow(() -> new RuntimeException("Simplified project not found with id " + projectId));
+        return materialRepository.findByProject(project);
     }
 
     //methods for controller
@@ -98,6 +100,15 @@ public class MaterialService {
         } else {
             return false;
         }
+    }
+
+    public void deleteMaterialsByProjectId(UUID projectId) {
+        SimplifiedProject project = simplifiedProjectService.findById(projectId)
+                .orElseThrow(() -> new RuntimeException("Simplified project not found with id " + projectId));
+//        System.out.println(project);
+        List<Material> materials = materialRepository.findByProject(project);
+        materials.forEach(material -> deleteById(material.getId()));
+
     }
 
 
