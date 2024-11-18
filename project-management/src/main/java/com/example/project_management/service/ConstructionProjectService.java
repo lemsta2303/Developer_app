@@ -17,10 +17,12 @@ import java.util.stream.Collectors;
 public class ConstructionProjectService {
 
     private final ConstructionProjectRepository constructionProjectRepository;
+    private final MaterialCommunicationService materialCommunicationService;
 
     @Autowired
-    public ConstructionProjectService(ConstructionProjectRepository constructionProjectRepository) {
+    public ConstructionProjectService(ConstructionProjectRepository constructionProjectRepository, MaterialCommunicationService materialCommunicationService) {
         this.constructionProjectRepository = constructionProjectRepository;
+        this.materialCommunicationService = materialCommunicationService;
     }
 
 
@@ -48,6 +50,7 @@ public class ConstructionProjectService {
                 .name(projectDTO.getName())
                 .location(projectDTO.getLocation())
                 .build();
+        materialCommunicationService.notifyMaterialsAboutNewProject(project);
         constructionProjectRepository.save(project);
     }
 
@@ -71,15 +74,17 @@ public class ConstructionProjectService {
 
         project.setName(projectDTO.getName());
         project.setLocation(projectDTO.getLocation());
-
+        materialCommunicationService.notifyMaterialsAboutUpdatedProject(project);
         constructionProjectRepository.save(project);
     }
 
-    public boolean deleteProject(UUID id) {
-        Optional<ConstructionProject> project = constructionProjectRepository.findById(id);
+    public boolean deleteProject(UUID projectId) {
+        Optional<ConstructionProject> project = constructionProjectRepository.findById(projectId);
+
 
         if (project.isPresent()) {
-            constructionProjectRepository.deleteById(id);
+            materialCommunicationService.notifyMaterialsToDelete(projectId);
+            constructionProjectRepository.deleteById(projectId);
             return true;
         }
 

@@ -3,8 +3,8 @@ package com.example.material_management.service;
 import com.example.material_management.dto.MaterialCreateUpdateDTO;
 import com.example.material_management.dto.MaterialDetailDTO;
 import com.example.material_management.dto.MaterialSummaryDTO;
-import com.example.developer.model.ConstructionProject;
 import com.example.material_management.model.Material;
+import com.example.material_management.model.SimplifiedProject;
 import com.example.material_management.repository.MaterialRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,12 +18,20 @@ import java.util.stream.Collectors;
 public class MaterialService {
 
     private final MaterialRepository materialRepository;
-    private final ConstructionProjectService constructionProjectService;
+    private final SimplifiedProjectService simplifiedProjectService;
+
+//    private final ConstructionProjectService constructionProjectService;
+
+//    @Autowired
+//    public MaterialService(MaterialRepository materialRepository, ConstructionProjectService constructionProjectService) {
+//        this.materialRepository = materialRepository;
+//        this.constructionProjectService = constructionProjectService;
+//    }
 
     @Autowired
-    public MaterialService(MaterialRepository materialRepository, ConstructionProjectService constructionProjectService) {
+    public MaterialService(MaterialRepository materialRepository, SimplifiedProjectService simplifiedProjectService) {
         this.materialRepository = materialRepository;
-        this.constructionProjectService = constructionProjectService;
+        this.simplifiedProjectService = simplifiedProjectService;
     }
 
     public List<Material> findAll() {
@@ -42,15 +50,14 @@ public class MaterialService {
         materialRepository.deleteById(id);
     }
 
-    public List<Material> findByProject(ConstructionProject project) {
-        return materialRepository.findByProject(project);
+    public List<Material> findByProject(UUID projectId) {
+        return materialRepository.findByProject(projectId);
     }
 
     //methods for controller
     public void createMaterial(UUID projectId, MaterialCreateUpdateDTO materialDTO) {
-        ConstructionProject project = constructionProjectService.findById(projectId)
-                .orElseThrow(() -> new RuntimeException("While creating material project not found with id " + projectId));
-
+        SimplifiedProject project = simplifiedProjectService.findById(projectId)
+                .orElseThrow(() -> new RuntimeException("Simplified project not found with id " + projectId));
         Material newMaterial = Material.builder()
                 .id(UUID.randomUUID())
                 .name(materialDTO.getName())
@@ -58,7 +65,6 @@ public class MaterialService {
                 .unit(materialDTO.getUnit())
                 .project(project)
                 .build();
-
         materialRepository.save(newMaterial);
     }
 
@@ -93,6 +99,8 @@ public class MaterialService {
             return false;
         }
     }
+
+
 
 
 }

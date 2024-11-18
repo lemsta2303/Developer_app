@@ -3,7 +3,9 @@ package com.example.material_management.controller;
 import com.example.material_management.dto.MaterialCreateUpdateDTO;
 import com.example.material_management.dto.MaterialDetailDTO;
 import com.example.material_management.dto.MaterialSummaryDTO;
+import com.example.material_management.model.SimplifiedProject;
 import com.example.material_management.service.MaterialService;
+import com.example.material_management.service.SimplifiedProjectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,10 +19,12 @@ import java.util.UUID;
 public class MaterialController {
 
     private final MaterialService materialService;
+    private final SimplifiedProjectService simplifiedProjectService;
 
     @Autowired
-    public MaterialController(MaterialService materialService) {
+    public MaterialController(MaterialService materialService, SimplifiedProjectService simplifiedProjectService) {
         this.materialService = materialService;
+        this.simplifiedProjectService = simplifiedProjectService;
     }
 
     // creating new material
@@ -77,5 +81,40 @@ public class MaterialController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
     }
+
+    //delete materials when some project is deleted to synchronous data
+    @DeleteMapping("/project/{projectId}")
+    public ResponseEntity<Void> deleteMaterialsByProjectId(@PathVariable UUID projectId) {
+        simplifiedProjectService.deleteSimplifiedProject(projectId);
+        return ResponseEntity.noContent().build();
+    }
+
+    //adding simplified project to synchronous data
+    @PostMapping("/project/{projectId}")
+    public ResponseEntity<Void> addSimplifiedProject(
+            @PathVariable UUID projectId,
+            @RequestBody SimplifiedProject projectDTO) {
+        try {
+            simplifiedProjectService.createSimplifiedProject(projectId, projectDTO.getName());
+            return ResponseEntity.status(HttpStatus.CREATED).build();
+        } catch (Exception ex) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
+    }
+
+    //updating simplified project to synchronous data
+    @PutMapping("/project/{projectId}")
+    public ResponseEntity<Void> updateSimplifiedProject(
+            @PathVariable UUID projectId,
+            @RequestBody SimplifiedProject projectDTO) {
+        try {
+            simplifiedProjectService.updateSimplifiedProject(projectId, projectDTO.getName());
+            return ResponseEntity.ok().build();
+        } catch (Exception ex) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
+    }
+
+
 
 }

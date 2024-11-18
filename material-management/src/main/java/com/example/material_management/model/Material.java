@@ -29,7 +29,8 @@ public class Material implements Serializable {
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "project_id")
-    private ConstructionProject project;
+    private SimplifiedProject project;
+
 
     public Material() {}
 

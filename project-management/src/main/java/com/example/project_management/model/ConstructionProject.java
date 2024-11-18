@@ -23,8 +23,8 @@ public class ConstructionProject implements Serializable {
     private String name;
     private String location;
 
-    @OneToMany(mappedBy = "project", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<Material> materials;
+//    @OneToMany(mappedBy = "project", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+//    private List<Material> materials;
 
     public ConstructionProject() {}
 
@@ -39,13 +39,12 @@ public class ConstructionProject implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
         ConstructionProject that = (ConstructionProject) o;
         return name.equals(that.name) &&
-                location.equals(that.location) &&
-                materials.equals(that.materials);
+                location.equals(that.location);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, location, materials);
+        return Objects.hash(name, location);
     }
 
 }
