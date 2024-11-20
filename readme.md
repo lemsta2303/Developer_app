@@ -2,33 +2,35 @@
 
 ## Description
 
-The **Developer Application** is a tool for managing construction projects and materials, built using **Java Spring**. The application allows users to create, update, delete, and view projects and their associated materials.
+The **Developer Application** is a tool for managing construction projects and materials, built using **Java Spring**. The application is developed using a **microservices architecture**, with separate services for project management and material management. An **API Gateway** is used to streamline communication between these services.  
 
 This project is part of the course **"Architecture of Web Services"** and is still under development.
 
 ## API Endpoints
 
 ### Construction Projects
-- **POST** `/api/projects`: Create a new project.
-- **GET** `/api/projects/{projectId}`: Get project details by ID.
-- **GET** `/api/projects`: Get all projects.
-- **PUT** `/api/projects/{projectId}`: Update project by ID.
-- **DELETE** `/api/projects/{projectId}`: Delete project by ID.
+
+- **POST** `/api/projects`: Create a new project.  
+- **GET** `/api/projects/{id}`: Retrieve details of a specific project.  
+- **GET** `/api/projects`: Retrieve a list of all projects.  
+- **PUT** `/api/projects/{id}`: Update an existing project.  
+- **DELETE** `/api/projects/{id}`: Delete a project by its ID.  
 
 ### Materials
-- **POST** `/api/materials/{projectId}`: Create a new material for a project.
-- **GET** `/api/materials/{materialId}`: Get material details by ID.
-- **GET** `/api/materials`: Get all materials.
-- **PUT** `/api/materials/{materialId}`: Update material by ID.
-- **DELETE** `/api/materials/{materialId}`: Delete material by ID.
+
+- **POST** `/api/materials/{projectId}`: Create a new material for a specific project.  
+- **GET** `/api/materials/{id}`: Retrieve details of a specific material.  
+- **GET** `/api/materials`: Retrieve a list of all materials.  
+- **PUT** `/api/materials/{id}`: Update an existing material.  
+- **DELETE** `/api/materials/{id}`: Delete a material by its ID.  
 
 ## Status
 
-The project is under development. Future updates will include user authentication and enhanced features for managing materials.
+The project is under development. Future updates will include a front-end interface, user authentication, and enhanced features for managing materials.
 
 ## Technologies
 
-- **Java Spring Boot** 
-- **Spring Data JPA**
-```
-
+- **Java Spring Boot**  
+- **Spring Data JPA**  
+- **Microservices Architecture**  
+- **API Gateway**  
