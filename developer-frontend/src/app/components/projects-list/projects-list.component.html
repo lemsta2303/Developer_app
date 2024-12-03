@@ -1,1 +1,16 @@
-<p>projects-list works!</p>
+<h1>Projety</h1>
+<ul class="projects-list">
+  @for (project of projects; track project.id) {
+    <li class="projects-list__item">
+      <p>
+        <a [routerLink]="['/project', project.id]">
+          {{project.name}}
+        </a>
+
+      </p>
+      <button (click)="deleteProject(project.id)">Delete</button>
+      <button [routerLink]="['/edit-project', project.id]">Edit</button>
+    </li>
+  }
+</ul>
+<button routerLink="/add-project">Add new project</button>

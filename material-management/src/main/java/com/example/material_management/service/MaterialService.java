@@ -105,10 +105,18 @@ public class MaterialService {
     public void deleteMaterialsByProjectId(UUID projectId) {
         SimplifiedProject project = simplifiedProjectService.findById(projectId)
                 .orElseThrow(() -> new RuntimeException("Simplified project not found with id " + projectId));
-//        System.out.println(project);
         List<Material> materials = materialRepository.findByProject(project);
         materials.forEach(material -> deleteById(material.getId()));
 
+    }
+
+    public List<MaterialSummaryDTO> getMaterialsByProjectId(UUID projectId) {
+        SimplifiedProject project = simplifiedProjectService.findById(projectId)
+                .orElseThrow(() -> new RuntimeException("Simplified project not found with id " + projectId));
+        List<Material> materials = materialRepository.findByProject(project);
+        return materials.stream()
+                .map(MaterialSummaryDTO::from)
+                .collect(Collectors.toList());
     }
 
 

@@ -1,0 +1,17 @@
+
+
+<div class="header" >
+  <div class="home-icon">
+    <a routerLink="/projects">
+      <img src="/assets/img/home-icon.svg" alt="home button">
+    </a>
+  </div>
+<!--  {{ isEditMode ? 'Edit Project: ' + oldStringName : 'Create New Project' }}-->
+  <ng-content select="[mainHeader]"></ng-content>
+</div>
+<div class="content">
+<!--  <h2 class="header">-->
+<!--    {{ isEditMode ? 'Edit Project: ' + oldStringName : 'Create New Project' }}-->
+<!--  </h2>-->
+  <ng-content></ng-content>
+</div>

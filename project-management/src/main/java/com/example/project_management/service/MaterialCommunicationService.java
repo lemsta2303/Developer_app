@@ -20,17 +20,17 @@ public class MaterialCommunicationService {
     }
 
     public void notifyMaterialsToDelete(UUID projectId) {
-        restTemplate.delete("http://localhost:8082/api/materials/project/" + projectId);
+        restTemplate.delete("http://localhost:8083/api/materials/project/" + projectId);
     }
 
     public void notifyMaterialsAboutNewProject(ConstructionProject project) {
-        String url = "http://localhost:8082/api/materials/project/" + project.getId();
+        String url = "http://localhost:8083/api/materials/project/" + project.getId();
         ConstructionProjectSummaryDTO dto = ConstructionProjectSummaryDTO.from(project);
         restTemplate.postForObject(url, dto, Void.class);
     }
 
     public void notifyMaterialsAboutUpdatedProject(ConstructionProject project) {
-        String url = "http://localhost:8082/api/materials/project/" + project.getId();
+        String url = "http://localhost:8083/api/materials/project/" + project.getId();
         ConstructionProjectSummaryDTO dto = ConstructionProjectSummaryDTO.from(project);
         restTemplate.put(url, dto);
     }

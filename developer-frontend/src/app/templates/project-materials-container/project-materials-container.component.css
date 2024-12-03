@@ -1,0 +1,17 @@
+.header {
+  padding: 3rem 0;
+}
+.header .home-icon {
+  width: 2rem;
+  height: 2rem;
+  position: absolute;
+  left: 1rem;
+  top: 1rem;
+  z-index: 1;
+}
+.header .home-icon a, .header .home-icon img {
+  height: 100%;
+  width: 100%;
+}
+
+/*# sourceMappingURL=project-materials-container.component.css.map */

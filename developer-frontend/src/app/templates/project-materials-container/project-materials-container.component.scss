@@ -1,0 +1,18 @@
+.header {
+  padding:3rem 0;
+  .home-icon {
+    width:2rem;
+    height:2rem;
+    position: absolute;
+    left:1rem;
+    top:1rem;
+    z-index:1;
+    a, img {
+      height:100%;
+      width:100%;
+    }
+  }
+
+}
+
+

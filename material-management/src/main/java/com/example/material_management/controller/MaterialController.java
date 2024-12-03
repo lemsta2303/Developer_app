@@ -51,6 +51,18 @@ public class MaterialController {
         }
     }
 
+    // get material by project id
+    @GetMapping("/project/{projectId}")
+    public ResponseEntity<List<MaterialSummaryDTO>> getMaterialsByProjectId(@PathVariable UUID projectId) {
+        try {
+            List<MaterialSummaryDTO> materials = materialService.getMaterialsByProjectId(projectId);
+            return ResponseEntity.ok(materials);
+        } catch (RuntimeException ex) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
+
+    }
+
     //get all materials
     @GetMapping
     public ResponseEntity<List<MaterialSummaryDTO>> getAllMaterials() {
@@ -85,7 +97,6 @@ public class MaterialController {
     //delete materials when some project is deleted to synchronous data
     @DeleteMapping("/project/{projectId}")
     public ResponseEntity<Void> deleteMaterialsByProjectId(@PathVariable UUID projectId) {
-        System.out.println("!!!!!!!Deleting materials for project with id: " + projectId);
         materialService.deleteMaterialsByProjectId(projectId);
         simplifiedProjectService.deleteSimplifiedProject(projectId);
         return ResponseEntity.noContent().build();
