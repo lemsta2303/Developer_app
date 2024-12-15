@@ -3,15 +3,15 @@ POST http://localhost:8085/api/projects
 Content-Type: application/json
 
 {
-  "name": "New Project2",
-  "location": "New York"
+  "name": "New Project1",
+  "location": "New Yorkdsq"
 }
 
 ### 2. Pobranie wszystkich projektów
 GET http://localhost:8085/api/projects
 
 ### 3. Pobranie szczegółów projektu po ID
-GET http://localhost:8085/api/projects/11111111-1111-1111-1111-111111111111
+GET http://localhost:8085/api/projects/50d15bfe-347e-4a3f-87bb-c1491ca7c167
 
 ### 4. Zaktualizowanie projektu
 PUT http://localhost:8085/api/projects/aadcf7ce-965a-42f2-936e-6d5cb4f27abc
@@ -23,17 +23,17 @@ Content-Type: application/json
 }
 
 ### 5. Usunięcie projektu
-DELETE http://localhost:8085/api/projects/d070d0f0-d6c4-429c-a761-c2bce8099259
+DELETE http://localhost:8085/api/projects/11111111-1111-1111-1111-111111111111
 
 
 ### 6. Tworzenie nowego materiału dla projektu
-POST http://localhost:8085/api/materials/22222222-2222-2222-2222-222222222222
+POST http://localhost:8085/api/materials/11111111-1111-1111-1111-111111111111
 Content-Type: application/json
 
 {
-  "name": "Example",
+  "name": "test23",
   "unit": "kg",
-  "unitPrice": 100.0,
+  "unitPrice": 123456789.0,
   "quantity": 50
 }
 
@@ -49,7 +49,7 @@ Content-Type: application/json
 }
 
 ### 8. Pobranie szczegółów materiału
-GET http://localhost:8085/api/materials/a3eeaa30-1697-44e9-a921-1c5ead46fcb8
+GET http://localhost:8085/api/materials/f23b0cba-e018-42b6-aa68-9f65ae99ef51
 
 ### 9. Usuwanie materiału
 DELETE http://localhost:8085/api/materials/e283f236-6104-4121-9fbd-858a42ac3521
@@ -57,3 +57,6 @@ DELETE http://localhost:8085/api/materials/e283f236-6104-4121-9fbd-858a42ac3521
 
 ### 10. Pobranie wszystkich materiałów
 GET http://localhost:8085/api/materials
+
+### 11. Pobranie wszystkich materiałów dla projektu
+GET http://localhost:8085/api/materials/project/ef9312ac-7448-4d68-b8f1-bb88eb026266

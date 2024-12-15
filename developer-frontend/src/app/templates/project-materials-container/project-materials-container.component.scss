@@ -1,0 +1,42 @@
+@import "main";
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  background-color: var(--primary-color);
+  color: #fff;
+  gap:1rem;
+
+  .home-icon {
+    display: flex;
+    align-items: center;
+
+    a {
+      display: inline-block;
+      width: 2.5rem;
+      height: 2.5rem;
+
+      img {
+        width: 100%;
+        height: auto;
+      }
+
+      &:hover {
+        opacity: 0.8;
+      }
+    }
+  }
+
+
+}
+
+.content {
+  padding: 1.5rem;
+  background-color: #fff;
+  border: 1px solid var(--secondary-color);
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin: 1rem 0;
+}

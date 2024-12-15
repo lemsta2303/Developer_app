@@ -1,0 +1,54 @@
+<app-project-materials-container>
+  <h1 mainHeader>
+    {{ projectDetails.name }}
+  </h1>
+
+  <div class="project-information">
+    <div class="project-information__single-info">
+      <p>
+        Project name:
+      </p>
+      <p>
+        {{projectDetails.name }}
+      </p>
+    </div>
+    <div class="project-information__single-info">
+      <p>
+        Project location:
+      </p>
+      <p>
+        {{projectDetails.location }}
+      </p>
+    </div>
+
+  </div>
+
+  <div class="materials-list-wrapper">
+    <h3>Materials List:</h3>
+    @if(materials.length !== 0) {
+      <ul class="materials-list">
+        @for(material of materials; track material.id) {
+          <li class="material-item">
+            <p>
+              <a [routerLink]="['/project', projectId, 'material', material.id]">
+                {{ material.name }}
+              </a>
+            </p>
+            <div class="buttons">
+              <button (click)="deleteMaterial(material.id)" class="delete-button btn btn--delete">Delete</button>
+              <button (click)="editMaterial(material.id)" class="edit-button btn btn--neutral">Edit</button>
+            </div>
+          </li>
+        }
+      </ul>
+    } @else {
+      <p class="no-materials">No materials available for this project yet!</p>
+    }
+  </div>
+  <button (click)="openAddEditMaterialPopup()" class="btn btn--add-new">Add new material</button>
+  <app-add-edit-material #materialPopup [(ifOpened)]="popupOpened" (refreshMaterialsList)="loadMaterials()"></app-add-edit-material>
+
+
+
+</app-project-materials-container>
+

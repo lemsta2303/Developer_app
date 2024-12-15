@@ -1,0 +1,27 @@
+<app-project-materials-container>
+  <h1 mainHeader>
+    Projects
+  </h1>
+  @if(projects.length !== 0) {
+    <ul class="projects-list">
+      @for (project of projects; track project.id) {
+        <li class="projects-list__item">
+          <p>
+            <a [routerLink]="['/project', project.id]">
+              {{project.name}}
+            </a>
+
+          </p>
+          <div class="buttons">
+            <button (click)="deleteProject(project.id)" class="btn btn--delete">Delete</button>
+            <button [routerLink]="['/edit-project', project.id]" class="btn btn--neutral">Edit</button>
+          </div>
+
+        </li>
+      }
+    </ul>
+  } @else {
+    <p class="no-projects">No projects added yet!</p>
+  }
+  <button routerLink="/add-project" class="btn btn--add-new">Add new project</button>
+</app-project-materials-container>

@@ -1,0 +1,77 @@
+<div class="popup-layer" [class.active]="ifOpened" (click)="closePopup()">
+  <div class="popup" (click)="$event.stopPropagation()">
+    <h2 class="popup-header">
+      {{ isEditMode ? 'Edit Material' : 'Add New Material' }}
+    </h2>
+    <form [formGroup]="materialForm" (ngSubmit)="onSubmit()" class="form-container">
+      <div class="form-group">
+        <label for="materialName" class="form-label">Material Name:</label>
+        <input
+          id="materialName"
+          type="text"
+          formControlName="name"
+          class="form-input"
+          placeholder="Enter material name"
+        />
+        @if(materialForm.get('name')?.invalid && materialForm.get('name')?.touched){
+          <div class="form-error" >
+            <small class="error">Material name is required.</small>
+          </div>
+        }
+      </div>
+      <div class="form-group">
+        <label for="unit" class="form-label">Unit:</label>
+        <input
+          id="unit"
+          type="text"
+          formControlName="unit"
+          class="form-input"
+          placeholder="e.g., kg, liter"
+        />
+        @if(materialForm.get('unit')?.invalid && materialForm.get('unit')?.touched){
+          <div class="form-error">
+            <small class="error">Unit is required.</small>
+          </div>
+        }
+
+      </div>
+
+      <div class="form-group">
+        <label for="unitPrice" class="form-label">Unit Price:</label>
+        <input
+          id="unitPrice"
+          type="number"
+          formControlName="unitPrice"
+          class="form-input"
+          placeholder="Enter unit price"
+        />
+        @if(materialForm.get('unitPrice')?.invalid && materialForm.get('unitPrice')?.touched) {
+          <div class="form-error">
+            <small class="error">Unit price must be a valid number.</small>
+          </div>
+        }
+      </div>
+
+      <div class="form-group">
+        <label for="quantity" class="form-label">Quantity:</label>
+        <input
+          id="quantity"
+          type="number"
+          formControlName="quantity"
+          class="form-input"
+          placeholder="Enter quantity"
+        />
+        @if(materialForm.get('quantity')?.invalid && materialForm.get('quantity')?.touched) {
+          <div class="form-error">
+            <small class="error">Quantity must be a valid number.</small>
+          </div>
+        }
+      </div>
+
+      <button type="submit" [disabled]="materialForm.invalid" class="form-submit-button btn btn--submit">
+        {{ isEditMode ? 'Submit editing' : 'Submit adding' }}
+      </button>
+      <button type="button" (click)="closePopup()" class="form-cancel-button btn btn--delete">Cancel</button>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,63 @@
+<app-project-materials-container>
+  <h1 mainHeader>
+    Material Details: {{ materialDetails.name }}
+  </h1>
+
+  <div class="material-information">
+    <div class="material-information__single-info">
+      <p>
+        Material Name:
+      </p>
+
+      <p>
+        {{ materialDetails.name }}
+      </p>
+
+
+    </div>
+    <div class="material-information__single-info">
+      <p>
+        Unit:
+      </p>
+      <p>
+        {{ materialDetails.unit }}
+      </p>
+    </div>
+    <div class="material-information__single-info">
+      <p>
+        Unit Price:
+      </p>
+      <p>
+        {{ materialDetails.unitPrice  }}
+      </p>
+    </div>
+    <div class="material-information__single-info">
+      <p>
+        Quantity:
+      </p>
+      <p>
+        {{ materialDetails.quantity }}
+      </p>
+    </div>
+  </div>
+
+  <div class="project-information">
+    <h3>Project Information</h3>
+    <div class="project-information__single-info">
+      <p>
+        Project Name:
+      </p>
+      <p>
+        <a routerLink="../../">{{ projectDetails.name }}</a>
+      </p>
+    </div>
+    <div class="project-information__single-info">
+      <p>
+        Project Location:
+      </p>
+      <p>
+        {{ projectDetails.location }}
+      </p>
+    </div>
+  </div>
+</app-project-materials-container>

@@ -1,0 +1,30 @@
+<app-project-materials-container>
+  <h1 mainHeader>
+    {{ isEditMode ? 'Edit Project: ' + oldStringName : 'Create New Project' }}
+  </h1>
+  <form [formGroup]="projectForm" (ngSubmit)="onSubmit()" class="form-container">
+    <div class="form-group">
+      <label for="projectName" class="form-label">Project Name:</label>
+      <input id="projectName" type="text" formControlName="name" class="form-input" />
+      @if (projectForm.get('name')?.invalid && projectForm.get('name')?.touched) {
+        <div class="form-error">
+          <small class="error">Project name is required.</small>
+        </div>
+      }
+    </div>
+    <div class="form-group">
+      <label for="projectLocation" class="form-label">Project Location:</label>
+      <input id="projectLocation" type="text" formControlName="location" class="form-input" />
+      @if (projectForm.get('location')?.invalid && projectForm.get('location')?.touched) {
+        <div class="form-error">
+          <small class="error">Project location is required.</small>
+        </div>
+      }
+    </div>
+    <button type="submit" [disabled]="projectForm.invalid" class="form-submit-button btn btn--submit">
+      {{ isEditMode ? 'Submit editing' : 'Submit adding' }}
+    </button>
+  </form>
+
+</app-project-materials-container>
+

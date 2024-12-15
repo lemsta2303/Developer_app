@@ -1,0 +1,48 @@
+$c_one: #001524;
+$c_two: #15616d;
+$c_three: #ffecd1;
+$c_four: #ff7d00;
+$c_five: #78290f;
+
+
+@mixin breakpoint($point) {
+  @if $point == mediumDesktop {
+    @media (max-width: 1400px) {
+      @content ;
+    }
+  } @else if $point == onlyDesktop {
+    @media (min-width: 960px) {
+      @content ;
+    }
+  } @else if $point == desktopStandard {
+    @media (max-width: 1700px) {
+      @content;
+    }
+  } @else if $point == smallDesktop {
+    @media (max-width: 1430px) {
+      @content ;
+    }
+  }
+  @else if $point == smallerDesktop {
+    @media (max-width: 1300px) {
+      @content ;
+    }
+  }@else if $point == tablet {
+    @media (max-width: 960px) {
+      @content ;
+    }
+  } @else if $point == phablet {
+    @media (max-width: 620px) {
+      @content ;
+    }
+  } @else if $point == mobileonly {
+    @media (max-width: 420px) {
+      @content ;
+    }
+  } @else if $point == mobileonly {
+    @media (max-width: 359px) {
+      @content ;
+    }
+  }
+}
+
