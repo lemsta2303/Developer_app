@@ -5,7 +5,7 @@ import {
 } from "../../templates/project-materials-container/project-materials-container.component";
 import {MaterialDetailsModel} from "../../models/material-details.model";
 import {ProjectDetailsModel} from "../../models/project-details.model";
-import {ActivatedRoute, Router} from "@angular/router";
+import {ActivatedRoute, Router, RouterLink} from "@angular/router";
 import {MaterialService} from "../../services/material.service";
 import {ProjectService} from "../../services/project.service";
 
@@ -14,7 +14,8 @@ import {ProjectService} from "../../services/project.service";
   standalone: true,
   imports: [
     AddEditMaterialComponent,
-    ProjectMaterialsContainerComponent
+    ProjectMaterialsContainerComponent,
+    RouterLink
   ],
   templateUrl: './material-details.component.html',
   styleUrl: './material-details.component.scss'

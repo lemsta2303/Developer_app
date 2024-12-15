@@ -68,10 +68,10 @@
         }
       </div>
 
-      <button type="submit" [disabled]="materialForm.invalid" class="form-submit-button">
-        {{ isEditMode ? 'Edit Material' : 'Add Material' }}
+      <button type="submit" [disabled]="materialForm.invalid" class="form-submit-button btn btn--submit">
+        {{ isEditMode ? 'Submit editing' : 'Submit adding' }}
       </button>
-      <button type="button" (click)="closePopup()" class="form-cancel-button">Cancel</button>
+      <button type="button" (click)="closePopup()" class="form-cancel-button btn btn--delete">Cancel</button>
     </form>
   </div>
 </div>

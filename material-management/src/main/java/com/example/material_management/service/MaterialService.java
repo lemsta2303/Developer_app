@@ -64,6 +64,7 @@ public class MaterialService {
                 .id(UUID.randomUUID())
                 .name(materialDTO.getName())
                 .quantity(materialDTO.getQuantity())
+                .unitPrice(materialDTO.getUnitPrice())
                 .unit(materialDTO.getUnit())
                 .project(project)
                 .build();
@@ -88,6 +89,7 @@ public class MaterialService {
                 .orElseThrow(() -> new RuntimeException("Material not found with id " + id));
         material.setName(materialDTO.getName());
         material.setQuantity(materialDTO.getQuantity());
+        material.setUnitPrice(materialDTO.getUnitPrice());
         material.setUnit(materialDTO.getUnit());
         save(material);
     }

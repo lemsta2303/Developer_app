@@ -1,8 +1,8 @@
 @import 'main';
 
 .wrapper {
-  max-width: 1200px;
+  padding: 1rem;
   margin: 0 auto;
-  background: $c_four;
-  box-sizing: content-box;
+  max-width: 1200px;
+  background-color: var(--background-color);
 }

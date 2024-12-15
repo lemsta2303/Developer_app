@@ -1,6 +1,6 @@
 <app-project-materials-container>
   <h1 mainHeader>
-    Project {{ projectDetails.name }}
+    {{ projectDetails.name }}
   </h1>
 
   <div class="project-information">
@@ -25,7 +25,7 @@
 
   <div class="materials-list-wrapper">
     <h3>Materials List:</h3>
-    @if(materials) {
+    @if(materials.length !== 0) {
       <ul class="materials-list">
         @for(material of materials; track material.id) {
           <li class="material-item">
@@ -34,16 +34,18 @@
                 {{ material.name }}
               </a>
             </p>
-            <button (click)="deleteMaterial(material.id)" class="delete-button">Delete</button>
-            <button (click)="editMaterial(material.id)" class="edit-button">Edit</button>
+            <div class="buttons">
+              <button (click)="deleteMaterial(material.id)" class="delete-button btn btn--delete">Delete</button>
+              <button (click)="editMaterial(material.id)" class="edit-button btn btn--neutral">Edit</button>
+            </div>
           </li>
         }
       </ul>
     } @else {
-      <p>No materials available for this project yet!</p>
+      <p class="no-materials">No materials available for this project yet!</p>
     }
   </div>
-  <button (click)="openAddEditMaterialPopup()">Add new material</button>
+  <button (click)="openAddEditMaterialPopup()" class="btn btn--add-new">Add new material</button>
   <app-add-edit-material #materialPopup [(ifOpened)]="popupOpened" (refreshMaterialsList)="loadMaterials()"></app-add-edit-material>
 
 

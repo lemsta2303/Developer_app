@@ -31,9 +31,9 @@ POST http://localhost:8085/api/materials/11111111-1111-1111-1111-111111111111
 Content-Type: application/json
 
 {
-  "name": "dasd",
+  "name": "test23",
   "unit": "kg",
-  "unitPrice": 100.0,
+  "unitPrice": 123456789.0,
   "quantity": 50
 }
 
@@ -49,7 +49,7 @@ Content-Type: application/json
 }
 
 ### 8. Pobranie szczegółów materiału
-GET http://localhost:8085/api/materials/a3eeaa30-1697-44e9-a921-1c5ead46fcb8
+GET http://localhost:8085/api/materials/f23b0cba-e018-42b6-aa68-9f65ae99ef51
 
 ### 9. Usuwanie materiału
 DELETE http://localhost:8085/api/materials/e283f236-6104-4121-9fbd-858a42ac3521

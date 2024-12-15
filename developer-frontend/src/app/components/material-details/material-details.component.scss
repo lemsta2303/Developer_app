@@ -1,1 +1,47 @@
-@import 'main';
+@import "main";
+
+.project-information,
+.material-information{
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 2.5rem;
+  padding: 1rem 1rem 1rem 0;
+
+  &__single-info {
+    display: flex;
+    gap: .5rem;
+    flex-wrap:wrap;
+    &:last-child {
+      border-bottom: none;
+    }
+
+    p {
+      margin: 0;
+      font-size: 1.6rem;
+      color: var(--text-color);
+
+      &:first-child {
+        font-weight: 700;
+        font-size:1.6rem;
+      }
+    }
+
+    a {
+      text-decoration: none;
+      font-weight:500;
+      color: var(--text-color);
+
+      &:hover {
+        text-decoration: underline;
+        color: var(--primary-color);
+      }
+    }
+  }
+
+  h3 {
+    font-size: 1.8rem;
+    color: var(--primary-color);
+  }
+}
