@@ -52,8 +52,28 @@ table {
   border-spacing: 0;
 }
 
-body {
-  font-size: 10px;
+ul li {
+  display: flex;
+  gap: 1rem;
+}
+
+p {
+  font-size: 20px;
+}
+
+.project-information__single-info {
+  display: flex;
+  gap: 1rem;
+}
+
+h3 {
+  font-size: 24px;
+}
+
+h1 {
+  font-size: 4rem;
+  padding: 0 1rem;
+  color: #ffecd1;
 }
 
 /*# sourceMappingURL=main.css.map */

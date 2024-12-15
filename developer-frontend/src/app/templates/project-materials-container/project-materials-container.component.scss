@@ -1,5 +1,7 @@
-.header {
-  padding:3rem 0;
+@import "main";
+.header{
+  padding:3rem 0rem;
+  background: $c_one;
   .home-icon {
     width:2rem;
     height:2rem;
@@ -12,7 +14,7 @@
       width:100%;
     }
   }
-
+  h1 {
+    font-size:5rem;
+  }
 }
-
-

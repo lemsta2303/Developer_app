@@ -1,4 +1,22 @@
-body {
-  font-size:10px;
+ul {
+  li {
+    display: flex;
+    gap:1rem;
+  }
 }
 
+
+p {
+  font-size:20px;
+}
+
+.project-information {
+  &__single-info {
+    display: flex;
+    gap:1rem;
+  }
+}
+
+h3 {
+  font-size:24px;
+}

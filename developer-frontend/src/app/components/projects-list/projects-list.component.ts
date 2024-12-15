@@ -2,12 +2,16 @@ import {Component, inject, OnInit} from '@angular/core';
 import {ProjectService} from "../../services/project.service";
 import {ProjectSummaryModel} from "../../models/project-summary.model";
 import {RouterLink} from "@angular/router";
+import {
+  ProjectMaterialsContainerComponent
+} from "../../templates/project-materials-container/project-materials-container.component";
 
 @Component({
   selector: 'app-projects-list',
   standalone: true,
   imports: [
-    RouterLink
+    RouterLink,
+    ProjectMaterialsContainerComponent
   ],
   templateUrl: './projects-list.component.html',
   styleUrl: './projects-list.component.scss'
