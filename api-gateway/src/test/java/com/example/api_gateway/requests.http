@@ -49,7 +49,7 @@ Content-Type: application/json
 }
 
 ### 8. Pobranie szczegółów materiału
-GET http://localhost:8085/api/materials/f23b0cba-e018-42b6-aa68-9f65ae99ef51
+GET http://localhost:8085/api/materials/f23b0cba-e018-42b6-aa68-9f65ae99ef512
 
 ### 9. Usuwanie materiału
 DELETE http://localhost:8085/api/materials/e283f236-6104-4121-9fbd-858a42ac3521
