@@ -13,4 +13,7 @@ The project is under development. Future updates will include user authenticatio
 - **Java Spring Boot**  
 - **Spring Data JPA**  
 - **Microservices Architecture**  
-- **Angular** (Frontend)  
+- **Angular**
+
+![image](https://github.com/user-attachments/assets/e23c8724-ec82-47ab-a9a1-cbff50f0fc93)
+![image](https://github.com/user-attachments/assets/2b49b198-c64c-4324-9580-a42714139e51)
